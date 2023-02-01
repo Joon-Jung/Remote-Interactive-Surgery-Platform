@@ -1,2 +1,2 @@
 # Remote-Interactive-Surgery-Platform
-This is placeholder of Remote Interactive Surgery Platform.
+This is placeholder for Remote Interactive Surgery Platform (RISP) – Proof of concept for an augmented reality based platform for surgical telementoring.
