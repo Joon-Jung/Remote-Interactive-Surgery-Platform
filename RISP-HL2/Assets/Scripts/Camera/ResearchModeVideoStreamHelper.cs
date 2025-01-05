@@ -48,6 +48,15 @@ public class ResearchModeVideoStreamHelper : MonoBehaviour
     private Texture2D longAbImageMediaTexture = null;
     private byte[] longAbImageFrameData = null;
 
+    //public GameObject LFPreviewPlane = null;
+    //private Material LFMediaMaterial = null;
+    //private Texture2D LFMediaTexture = null;
+    //private byte[] LFFrameData = null;
+
+    //public GameObject RFPreviewPlane = null;
+    //private Material RFMediaMaterial = null;
+    //private Texture2D RFMediaTexture = null;
+    //private byte[] RFFrameData = null;
 
     public TextMeshPro text;
 
@@ -64,6 +73,7 @@ public class ResearchModeVideoStreamHelper : MonoBehaviour
 #if UNITY_2020_1_OR_NEWER // note: Unity 2021.2 and later not supported
         IntPtr WorldOriginPtr = UnityEngine.XR.WindowsMR.WindowsMREnvironment.OriginSpatialCoordinateSystem;
         unityWorldOrigin = Marshal.GetObjectForIUnknown(WorldOriginPtr) as Windows.Perception.Spatial.SpatialCoordinateSystem;
+        //unityWorldOrigin = Windows.Perception.Spatial.SpatialLocator.GetDefault().CreateStationaryFrameOfReferenceAtCurrentLocation().CoordinateSystem;
 #else
         IntPtr WorldOriginPtr = UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr();
         unityWorldOrigin = Marshal.GetObjectForIUnknown(WorldOriginPtr) as Windows.Perception.Spatial.SpatialCoordinateSystem;
@@ -109,6 +119,21 @@ public class ResearchModeVideoStreamHelper : MonoBehaviour
             depthPreviewPlane.SetActive(false);
             shortAbImagePreviewPlane.SetActive(false);
         }
+        
+
+        //if (LFPreviewPlane != null)
+        //{
+        //    LFMediaMaterial = LFPreviewPlane.GetComponent<MeshRenderer>().material;
+        //    LFMediaTexture = new Texture2D(640, 480, TextureFormat.Alpha8, false);
+        //    LFMediaMaterial.mainTexture = LFMediaTexture;
+        //}
+
+        //if (RFPreviewPlane != null)
+        //{
+        //    RFMediaMaterial = RFPreviewPlane.GetComponent<MeshRenderer>().material;
+        //    RFMediaTexture = new Texture2D(640, 480, TextureFormat.Alpha8, false);
+        //    RFMediaMaterial.mainTexture = RFMediaTexture;
+        //}
 
         if (pointCloudRendererGo != null)
         {
@@ -132,6 +157,7 @@ public class ResearchModeVideoStreamHelper : MonoBehaviour
         if (depthSensorMode == DepthSensorMode.LongThrow) researchMode.StartLongDepthSensorLoop(enablePointCloud);
         else if (depthSensorMode == DepthSensorMode.ShortThrow) researchMode.StartDepthSensorLoop(enablePointCloud);
 
+        //researchMode.StartSpatialCamerasFrontLoop();
 #endif
     }
 
@@ -221,6 +247,47 @@ public class ResearchModeVideoStreamHelper : MonoBehaviour
                 longAbImageMediaTexture.Apply();
             }
         }
+
+        //// update LF camera texture
+        //if (showPreview && LFPreviewPlane != null && researchMode.LFImageUpdated())
+        //{
+        //    long ts;
+        //    byte[] frameTexture = researchMode.GetLFCameraBuffer(out ts);
+        //    if (frameTexture.Length > 0)
+        //    {
+        //        if (LFFrameData == null)
+        //        {
+        //            LFFrameData = frameTexture;
+        //        }
+        //        else
+        //        {
+        //            System.Buffer.BlockCopy(frameTexture, 0, LFFrameData, 0, LFFrameData.Length);
+        //        }
+
+        //        LFMediaTexture.LoadRawTextureData(LFFrameData);
+        //        LFMediaTexture.Apply();
+        //    }
+        //}
+        //// update RF camera texture
+        //if (showPreview && RFPreviewPlane != null && researchMode.RFImageUpdated())
+        //{
+        //    long ts;
+        //    byte[] frameTexture = researchMode.GetRFCameraBuffer(out ts);
+        //    if (frameTexture.Length > 0)
+        //    {
+        //        if (RFFrameData == null)
+        //        {
+        //            RFFrameData = frameTexture;
+        //        }
+        //        else
+        //        {
+        //            System.Buffer.BlockCopy(frameTexture, 0, RFFrameData, 0, RFFrameData.Length);
+        //        }
+
+        //        RFMediaTexture.LoadRawTextureData(RFFrameData);
+        //        RFMediaTexture.Apply();
+        //    }
+        //}
 
         // Update point cloud
         UpdatePointCloud();
@@ -360,6 +427,7 @@ public class ResearchModeVideoStreamHelper : MonoBehaviour
         Windows.Globalization.Calendar c = new Windows.Globalization.Calendar();
         Windows.Perception.PerceptionTimestamp ts = Windows.Perception.PerceptionTimestampHelper.FromHistoricalTargetTime(c.GetDateTime());
         return ts.TargetTime.ToUnixTimeMilliseconds();
+        //return ts.SystemRelativeTargetTime.Ticks;
     }
     private Windows.Perception.PerceptionTimestamp GetCurrentTimestamp()
     {

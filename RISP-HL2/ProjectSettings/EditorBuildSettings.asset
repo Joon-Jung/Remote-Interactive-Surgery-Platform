@@ -7,5 +7,5 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/RISP-HL.unity
-    guid: 5add822ad6c904a4fb01341f9b66c0f8
+    guid: e5e6587bcc5fa7d4c9dfa4af16145525
   m_configObjects: {}

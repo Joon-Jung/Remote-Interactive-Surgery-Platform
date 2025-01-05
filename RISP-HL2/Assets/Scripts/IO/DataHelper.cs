@@ -25,6 +25,35 @@ public class DataHelper : MonoBehaviour
         thread1.Start();
         thread0.Join();
         thread1.Join();
+        //float[] mat;
+        //researchModeHelper.GetLatestDepthWithMatrix(out mat);
+        //tcpClientHelper.SendUINT16Async(latestDepthImage);
+        //tcpClientHelper.SendRGBImageAsync(latestRGBImageFrame.RgbImageByte, latestRGBImageFrame.Width, latestRGBImageFrame.Height);
+
+        //For debuging perpose.
+        //Texture2D texture2D = new Texture2D(latestRGBImageFrame.Width, latestRGBImageFrame.Height, TextureFormat.BGRA32, false);
+        //texture2D.LoadRawTextureData(latestRGBImageFrame.RgbImageByte);
+        //texture2D.Apply();
+        //byte[] itemBGBytes = texture2D.EncodeToPNG();
+        //File.WriteAllBytes(Application.persistentDataPath + "\\" + "rgb.png", itemBGBytes);
+
+
+        //tcpClientHelper.SendRGBDAsync(latestDepthImage, latestRGBImageFrame.RgbImageByte, latestRGBImageFrame.Width, latestRGBImageFrame.Height);
+        //tcpClientHelperTwo.SendDepthImage(latestDepthImage);
+        //float[] projectionMatrix = latestRGBImageFrame.ProjectionMat;
+        //string debug_mat = "";
+        //foreach (float element in projectionMatrix)
+        //{
+        //    debug_mat += element.ToString() + ", ";
+        //}
+        //Debug.Log(debug_mat);
+        //float[] camToWorldMatrix = latestRGBImageFrame.CamToWorldMat;
+        //debug_mat = "";
+        //foreach(float element in camToWorldMatrix)
+        //{
+        //    debug_mat += element.ToString() + ", ";
+        //}
+        //Debug.Log(debug_mat);
         tcpClientHelper.SendRGBImage(latestRGBImageFrame);
         tcpClientHelper.SendPointCloud(pointCloud);
 #endif
