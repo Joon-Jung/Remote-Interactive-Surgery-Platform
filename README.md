@@ -2,7 +2,7 @@
 
 This repository contains code for a remote interactive surgery platform running on Micosoft HoloLens 2. For a detailed explanation of this software and evaluaation of our method, please refer to our paper [Remote Interactive Surgery Platform (RISP): Proof of Concept for an Augmented-Reality-Based Platform for Surgical Telementoring](https://www.mdpi.com/2313-433X/9/3/56).
 
-**Note**: This prepository is still work in progress.
+**05/Jan/2025**: We have fixed the issues with RISP-HL2.
 
 ## Prerequisties
 
