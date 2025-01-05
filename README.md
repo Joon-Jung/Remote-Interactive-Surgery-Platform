@@ -1,6 +1,6 @@
 # Remote-Interactive-Surgery-Platform
 
-This repository contains code for a remote interactive surgery platform running on Micosoft HoloLens 2. For a detailed explanation of this software and evaluaation of our method, please refer to our paper [Remote Interactive Surgery Platform (RISP): Proof of Concept for an Augmented-Reality-Based Platform for Surgical Telementoring](https://www.mdpi.com/2313-433X/9/3/56).
+This repository contains official code for a remote interactive surgery platform running on Micosoft HoloLens 2. For a detailed explanation of this software and evaluaation of our method, please refer to our paper [Remote Interactive Surgery Platform (RISP): Proof of Concept for an Augmented-Reality-Based Platform for Surgical Telementoring](https://www.mdpi.com/2313-433X/9/3/56).
 
 **05/Jan/2025**: We have fixed the issues with RISP-HL2.
 
@@ -54,7 +54,7 @@ This software requires a Microsoft HoloLens 2 and a PC and those two devices can
 * Create a virtual environment of `python 3.7` using `Anaconda`.
 * Open `RISP-Com\main_application` and intall depenendices through `pip install -r requirements.txt`.
 
-### Installing RISP-Com voice_communic
+### Installing RISP-Com voice_communicator
 
 * Open `RISP-Com\voice_communicator` with Unity.
 * Open `Voice_client` scene and insert the WebRTC signaler server address to `NodeDssSignaler > Http Server Address`.
@@ -68,12 +68,6 @@ This software requires a Microsoft HoloLens 2 and a PC and those two devices can
 3. Enter HoloLens's IP address.
 4. Launch built `Voice_Client` and click `CreateOffer` button.
 
-## Work in progress
-
-* [x] First version of remote interactive surgery platform code released.
-* [ ] Add measurement tools (e.g., rulers in `RISP-HL2`).
-* [ ] Detailed intrcution of `How to use`.
-* etc.....
 
 ## Citation
 
